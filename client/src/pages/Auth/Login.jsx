@@ -26,11 +26,9 @@ const Login = () => {
 			);
 
 			if (res && res.data.success) {
-				console.log(`hello-1`);
 				toast.success(res.data && res.data.message);
 				navigate('/');
 			} else {
-				console.log(`hello-2`);
 				toast.error(res.data.message);
 			}
 		} catch (error) {

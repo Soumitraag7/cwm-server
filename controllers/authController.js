@@ -21,7 +21,7 @@ export const registerController = async (req, res) => {
     // existing user
     if (existingUser) {
       return res.status(200).send({
-        sucess: false,
+        success: false,
         message: 'Allready Registered Please Login'
       })
     }
@@ -33,7 +33,7 @@ export const registerController = async (req, res) => {
     const user = await new userModel({ name, email, password: hashedPassword, phone, address }).save()
 
     res.status(201).send({
-      sucess: true,
+      success: true,
       message: 'User Registered Successfully',
       user
     })
@@ -41,7 +41,7 @@ export const registerController = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      sucess: false,
+      success: false,
       message: 'Error in registration',
       error
     })
@@ -57,7 +57,7 @@ export const loginController = async (req, res) => {
     // validations
     if (!email || !password) {
       return res.status(404).send({
-        sucess: false,
+        success: false,
         message: 'Invalide email or password'
       })
     }
@@ -67,7 +67,7 @@ export const loginController = async (req, res) => {
 
     if (!user) {
       return res.status(404).send({
-        sucess: false,
+        success: false,
         message: 'Email is not registered'
       })
     }
@@ -76,7 +76,7 @@ export const loginController = async (req, res) => {
 
     if (!matchPassword) {
       return res.status(200).send({
-        sucess: false,
+        success: false,
         message: 'Invalide Password'
       })
     }
@@ -85,7 +85,7 @@ export const loginController = async (req, res) => {
     const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" })
 
     res.status(200).send({
-      sucess: true,
+      success: true,
       message: 'Login Successfully',
       user: {
         name: user.name,
@@ -100,7 +100,7 @@ export const loginController = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      sucess: false,
+      success: false,
       message: 'Error in logging',
       error
     })
