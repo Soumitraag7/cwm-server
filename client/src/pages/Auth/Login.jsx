@@ -45,8 +45,8 @@ const Login = () => {
 	return (
 		<Layout title={'Login Page'}>
 			<div className="form-container" style={{ minHeight: '90vh' }}>
-				<h4 className="title">LOGIN FORM</h4>
 				<form onSubmit={handleSubmit}>
+					<h4 className="title">LOGIN FORM</h4>
 					<div className="mb-3">
 						<input
 							type="email"
@@ -68,6 +68,15 @@ const Login = () => {
 							placeholder="Enter your Password"
 							required
 						/>
+					</div>
+					<div className="mb-3">
+						<button
+							type="button"
+							className="btn btn-primary"
+							onClick={() => navigate('/forgot-password')}
+						>
+							Forgot Password
+						</button>
 					</div>
 					<button type="submit" className="btn btn-primary">
 						Login

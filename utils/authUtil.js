@@ -13,3 +13,7 @@ export const hashPassword = async (password) => {
 export const comparePassword = async (password, hashedPassword) => {
   return bcrypt.compare(password, hashedPassword);
 };
+
+export const compareAnswer = async (password, hashedAnswer) => {
+  return bcrypt.compare(password, hashedAnswer);
+};

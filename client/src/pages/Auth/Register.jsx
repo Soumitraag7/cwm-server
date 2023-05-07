@@ -11,6 +11,7 @@ const Register = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [answer, setAnswer] = useState('');
 	const [phone, setPhone] = useState('');
 	const [address, setAddress] = useState('');
 
@@ -25,7 +26,7 @@ const Register = () => {
 			const res = await axios.post(
 				// `${process.env.REACT_APP_API}/auth/register`,
 				`${urlWithProxy}/auth/register`,
-				{ name, email, password, phone, address }
+				{ name, email, password, answer, phone, address }
 			);
 
 			if (res && res.data.success) {
@@ -43,8 +44,8 @@ const Register = () => {
 	return (
 		<Layout title={'Register Page'}>
 			<div className="form-container" style={{ minHeight: '90vh' }}>
-				<h4 className="title">REGISTER FORM</h4>
 				<form onSubmit={handleSubmit}>
+					<h4 className="title">REGISTER FORM</h4>
 					<div className="mb-3">
 						{/* <label htmlFor="exampleInputName" className="form-label">
 							Name
@@ -78,6 +79,17 @@ const Register = () => {
 							className="form-control"
 							id="exampleInputPassword"
 							placeholder="Enter your Password"
+							required
+						/>
+					</div>
+					<div className="mb-3">
+						<input
+							type="text"
+							value={answer}
+							onChange={e => setAnswer(e.target.value)}
+							className="form-control"
+							id="exampleInputAnswer"
+							placeholder="Enter a Passphrase"
 							required
 						/>
 					</div>
