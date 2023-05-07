@@ -7,14 +7,23 @@ import Contact from './pages/Contact';
 import Policy from './pages/Policy';
 import Pagenotfound from './pages/Pagenotfound';
 import Categories from './pages/Categories';
+import Dashbord from './pages/user/Dashbord';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
+
+import PrivateRoute from './components/Routes/Private';
 
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+
+				{/* Protected Routes */}
+				<Route path="/dashbord" element={<PrivateRoute />}>
+					<Route path="" element={<Dashbord />} />
+				</Route>
+
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/about" element={<About />} />

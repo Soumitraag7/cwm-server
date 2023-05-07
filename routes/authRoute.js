@@ -19,6 +19,12 @@ router.post('/register', registerController)
 */
 router.post('/login', loginController)
 
+/**
+ * GET
+ * protected rout
+*/
+router.get('/user-auth', requireSignIn, (req, res) => { res.status(200).send({ ok: true }) })
+
 
 // test route
 router.get('/test', requireSignIn, isAdmin, testController)

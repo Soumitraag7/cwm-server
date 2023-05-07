@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // import component
 import Layout from '../../components/Layout/Layout';
@@ -14,6 +14,7 @@ const Login = () => {
 	const [auth, setAuth] = useAuth();
 
 	const navigate = useNavigate();
+	const location = useLocation();
 
 	// form submit function
 	const urlWithProxy = '/api/v1';
@@ -31,7 +32,7 @@ const Login = () => {
 				toast.success(res.data && res.data.message);
 				setAuth({ ...auth, user: res.data.user, token: res.data.token });
 				localStorage.setItem('auth', JSON.stringify(res.data));
-				navigate('/');
+				navigate(location.state || '/');
 			} else {
 				toast.error(res.data.message);
 			}
